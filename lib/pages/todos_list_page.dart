@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_list_app/pages/data_input_page.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class TodosPage extends StatelessWidget {
@@ -20,7 +21,9 @@ class TodosPage extends StatelessWidget {
           CupertinoButton(
               color: Colors.teal,
               child: 'Add a New Task'.text.make(),
-              onPressed: () {})
+              onPressed: () {
+                Navigator.pushNamed(context, DataInputPage.id);
+              })
         ],
       ).p(24),
     );

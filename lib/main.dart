@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list_app/pages/todos_list_page.dart';
-import './pages/my_homepage.dart';
+import 'pages/data_input_page.dart';
 
 void main() {
   runApp(const MyApp());
