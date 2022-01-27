@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       create: (context) => TaskProvider(),
       builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Todo App',
         theme: ThemeData(
           primarySwatch: Colors.teal,
         ),
