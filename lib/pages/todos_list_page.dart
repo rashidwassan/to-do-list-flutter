@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list_app/pages/data_input_page.dart';
@@ -29,20 +28,36 @@ class TodosPage extends StatelessWidget {
                       itemCount: taskProvider.tasks.length,
                       itemBuilder: (context, index) => Dismissible(
                             key: Key(taskProvider.tasks[index].title),
-                            onDismissed: (v) {},
-                            child: Card(
-                                child: ListTile(
-                              title: Text(
-                                taskProvider.tasks[index].title,
-                              ),
-                              subtitle: taskProvider.tasks[index].isCompleted
-                                  ? 'Compteled'.text.make()
-                                  : const Text('Incomplete'),
-                            )),
+                            onDismissed: (v) {
+                              // Removing the element from Task[]
+                              taskProvider.removeTask(index);
+                            },
+                            child: GestureDetector(
+                              onDoubleTap: () {
+                                taskProvider.setCompleted(index);
+                              },
+                              child: Card(
+                                  child: ListTile(
+                                title: Text(
+                                  taskProvider.tasks[index].title,
+                                  style: TextStyle(
+                                      decoration:
+                                          taskProvider.tasks[index].isCompleted
+                                              ? TextDecoration.lineThrough
+                                              : TextDecoration.none,
+                                      fontWeight:
+                                          taskProvider.tasks[index].isCompleted
+                                              ? FontWeight.normal
+                                              : FontWeight.bold),
+                                ),
+                                subtitle: taskProvider.tasks[index].isCompleted
+                                    ? 'Compteled'.text.make()
+                                    : const Text('Incomplete'),
+                              )),
+                            ),
                           )),
             ),
-            CupertinoButton(
-                color: Colors.teal,
+            ElevatedButton(
                 child: 'Add a New Task'.text.make(),
                 onPressed: () {
                   Navigator.push(context,

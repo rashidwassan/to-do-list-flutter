@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list_app/models/task.dart';
@@ -43,12 +42,11 @@ class DataInputPage extends StatelessWidget {
                   border: OutlineInputBorder()),
             ),
             24.heightBox,
-            CupertinoButton(
+            ElevatedButton(
               child: 'Add Task'.text.make(),
               onPressed: () {
                 addTask(context);
               },
-              color: Theme.of(context).primaryColor,
             )
           ],
         ),
